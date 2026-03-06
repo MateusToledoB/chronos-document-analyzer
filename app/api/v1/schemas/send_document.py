@@ -4,7 +4,7 @@ class SendDocumentRequest:
     def __init__(
         self,
         document: UploadFile = File(...),
-        file_type: str = Form(...)
+        cpf_number: str = Form(...)
     ):
         self.document = document
-        self.file_type = file_type
+        self.cpf_number = cpf_number
