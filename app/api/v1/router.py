@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.api.v1.endpoints.send_document import router as send_document_router
+from app.api.v1.endpoints.cpf_validation import router as send_document_router
 
 api_router_v1 = APIRouter()
 
