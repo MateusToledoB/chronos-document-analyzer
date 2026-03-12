@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from app.api.v1.schemas.cpf_validation import SendDocumentRequest
 from app.utils.file_utils import FileUtils
 from app.utils.uuid_utils import UUIDUtils
-from app.services.ocr_service import OCRService
+from app.services.ocr_validate_cpf_service import OCRService
 from app.utils.validadion_utils import ValidationUtils
 
 router = APIRouter()
@@ -29,8 +29,8 @@ async def send_document(data: SendDocumentRequest = Depends()):
         return {
             "status": "success" if validation["is_valid_match"] else "failed",
             "score": f"{validation['best_score']}%",
-            "detected_cpfs": matches,
-            "best_match": validation["best_match"]
+            "matches": len(matches),
+            "status_qualifier": "High" if validation['best_score'] >= 80 else "Low" if validation['best_score'] > 0 else "Not Found"
         }
 
     except Exception as exc:

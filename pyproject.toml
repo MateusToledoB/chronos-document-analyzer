@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "easyocr>=1.7.2",
     "fastapi>=0.135.1",
     "opencv-python>=4.13.0.92",
     "opencv-python-headless>=4.13.0.92",
